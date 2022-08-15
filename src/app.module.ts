@@ -3,10 +3,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CommentsModule } from './comments/comments.module';
 import { getTypeOrmConfig } from './config/typeorm.config';
-import { UsersModule } from './users/users.module';
-import { VideosModule } from './videos/videos.module';
+import { CommentsModule } from './shared/comments/comments.module';
+import { UsersModule } from './shared/users/users.module';
+import { VideosModule } from './shared/videos/videos.module';
 
 @Module({
   imports: [
