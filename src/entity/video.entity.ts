@@ -37,11 +37,11 @@ export class VideoEntity extends BaseEntity {
   @Column({ default: '', name: 'thumbnail_path' })
   thumbnailPath: string;
 
-  @ManyToOne(() => UserEntity, (user) => user.videos)
+  @ManyToOne(() => UserEntity, user => user.videos)
   @JoinColumn({ name: 'user_id' })
   user: UserEntity;
 
-  @ManyToOne(() => CommentEntity, (comment) => comment.video)
+  @ManyToOne(() => CommentEntity, comment => comment.video)
   comments: CommentEntity[];
 
   @CreateDateColumn({ name: 'created_at' })

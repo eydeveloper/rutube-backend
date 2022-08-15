@@ -36,13 +36,13 @@ export class UserEntity extends BaseEntity {
   @Column({ default: '', name: 'avatar_path' })
   avatarPath: string;
 
-  @OneToMany(() => VideoEntity, (video) => video.user)
+  @OneToMany(() => VideoEntity, video => video.user)
   videos: VideoEntity[];
 
-  @OneToMany(() => SubscriptionEntity, (subscription) => subscription.fromUser)
+  @OneToMany(() => SubscriptionEntity, subscription => subscription.fromUser)
   subscriptions: SubscriptionEntity[];
 
-  @OneToMany(() => SubscriptionEntity, (subscription) => subscription.toUser)
+  @OneToMany(() => SubscriptionEntity, subscription => subscription.toUser)
   subscribers: SubscriptionEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
