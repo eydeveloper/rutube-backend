@@ -1,8 +1,15 @@
-import { Column, JoinColumn, ManyToOne } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  JoinColumn,
+  ManyToOne,
+  UpdateDateColumn
+} from 'typeorm';
 import { UserEntity } from './user.entity';
 import { VideoEntity } from './video.entity';
 
-export class CommentEntity {
+export class CommentEntity extends BaseEntity {
   @Column({ type: 'text' })
   message: string;
 
@@ -13,4 +20,10 @@ export class CommentEntity {
   @ManyToOne(() => VideoEntity, video => video.comments)
   @JoinColumn({ name: 'video_id' })
   video: VideoEntity;
+
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: Date;
 }
