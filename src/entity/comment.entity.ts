@@ -2,14 +2,20 @@ import {
   BaseEntity,
   Column,
   CreateDateColumn,
+  Entity,
   JoinColumn,
   ManyToOne,
+  PrimaryGeneratedColumn,
   UpdateDateColumn
 } from 'typeorm';
 import { UserEntity } from './user.entity';
 import { VideoEntity } from './video.entity';
 
+@Entity('Comment')
 export class CommentEntity extends BaseEntity {
+  @PrimaryGeneratedColumn()
+  id: number;
+
   @Column({ type: 'text' })
   message: string;
 

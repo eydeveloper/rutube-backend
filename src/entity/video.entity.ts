@@ -3,11 +3,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from 'typeorm';
-import { JoinColumn } from 'typeorm/browser';
 import { CommentEntity } from './comment.entity';
 import { UserEntity } from './user.entity';
 
@@ -18,6 +19,9 @@ export class VideoEntity extends BaseEntity {
 
   @Column()
   title: string;
+
+  @Column({ default: '', type: 'text' })
+  description: string;
 
   @Column({ default: false, name: 'is_public' })
   isPublic: boolean;
@@ -41,7 +45,7 @@ export class VideoEntity extends BaseEntity {
   @JoinColumn({ name: 'user_id' })
   user: UserEntity;
 
-  @ManyToOne(() => CommentEntity, comment => comment.video)
+  @OneToMany(() => CommentEntity, comment => comment.video)
   comments: CommentEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
